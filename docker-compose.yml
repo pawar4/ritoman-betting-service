@@ -1,0 +1,26 @@
+version: '3'
+services:
+  rbsdb:
+    image: postgres
+    container_name: rbsdb
+    ports:
+      - "5401:5432"
+    env_file:
+      - database.env
+    volumes:
+      - ./postgres.conf:/etc/postgresql/postgresql.conf
+      - ./ritoman_betting_service/internal/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - database-data:/var/lib/postgresql/data/
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    restart: always
+  ritoman-betting-service:
+    build:
+      context: .
+    command: uvicorn ritoman_betting_service.main:app --reload
+    volumes:
+      - .:/workarea
+    depends_on: 
+      - rbsdb
+        
+volumes:
+  database-data:
