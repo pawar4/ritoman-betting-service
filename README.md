@@ -1,5 +1,5 @@
 # ritoman-betting-service
-A registry service for webhook providers and consumers
+service that allows users to bet fake points on LoL games
 
 ## Quick Start
 Here is quick list of instructions to setup the project and run test cases. In order to do this the only dependency is `docker-compose`

@@ -11,7 +11,7 @@ with open("README.md", "r") as f:
 setup(
     name="sed-cloud/ritoman-betting-service",
     version="0.0.1",
-    description="A registry service for webhook providers and consumers",
+    description="service that allows users to bet fake points on LoL games",
     long_description=readme,
     long_description_content_type="text/markdown",
     author="Stephen Davis",
