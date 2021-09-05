@@ -29,3 +29,6 @@ def register_bet(game_id: int, better_id: str, bettee_id: str, bet_condition: st
                     VALUES (%(game_id)d, %(better_id)s, %(bettee_id)s, %(bet_condtion)s, %(bet_amount)d)',
                 {'game_id' : game_id, 'better_id': better_id, 'bettee_id': bettee_id, 'bet_condition': bet_condition, 'bet_amount': bet_amount}
             )
+            return db.rowcount > 0
+        except Exception:
+            return False
